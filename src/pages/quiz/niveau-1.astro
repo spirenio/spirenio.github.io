@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 const title = "Quiz Plongeur Niveau 1 FFESSM — Préparez votre N1 | Spirenio";
-const description = "33 questions pour préparer votre brevet de plongeur Niveau 1 FFESSM (PE20). Physique, accidents, désaturation, matériel, réglementation, signaux, environnement.";
+const description = "37 questions pour préparer votre brevet de plongeur Niveau 1 FFESSM (PE20). Physique, accidents, désaturation, matériel, réglementation, signaux, environnement.";
 ---
 
 <Layout title={title} description={description}>
@@ -11,7 +11,7 @@ const description = "33 questions pour préparer votre brevet de plongeur Niveau
     "@context": "https://schema.org",
     "@type": "Quiz",
     "name": "Quiz Plongeur Niveau 1 FFESSM",
-    "description": "33 questions pour préparer le brevet de plongeur Niveau 1 FFESSM (PE20). Basé sur le Manuel de Formation Technique FFESSM décembre 2025.",
+    "description": "37 questions pour préparer le brevet de plongeur Niveau 1 FFESSM (PE20). Basé sur le Manuel de Formation Technique FFESSM décembre 2025.",
     "educationalLevel": "Plongeur Niveau 1 FFESSM",
     "about": { "@type": "Thing", "name": "Plongée sous-marine FFESSM Niveau 1" }
   }
@@ -28,14 +28,14 @@ const description = "33 questions pour préparer votre brevet de plongeur Niveau
   <div class="page-hero-inner anim">
     <span class="page-tag">Quiz FFESSM</span>
     <h1 class="page-title">Quiz Plongeur Niveau 1<br><em style="font-style:italic; color:var(--bleu-mer);">PE20 — Plongeur encadré à 20 m</em></h1>
-    <p class="page-sub">33 questions réparties en 7 thèmes pour préparer votre brevet N1 FFESSM. Basé sur le Manuel de Formation Technique FFESSM — version décembre 2025. Correction immédiate avec explication à chaque question.</p>
+    <p class="page-sub">37 questions réparties en 7 thèmes pour préparer votre brevet N1 FFESSM. Basé sur le Manuel de Formation Technique FFESSM — version décembre 2025. Correction immédiate avec explication à chaque question.</p>
   </div>
 </div>
 
 <div class="quiz-container">
 
   <div class="progress-text">
-    <span id="progress-label">Question 1 / 33</span>
+    <span id="progress-label">Question 1 / 37</span>
     <span id="score-label">Score : 0 / 0</span>
   </div>
   <div class="progress-bar-wrap">
@@ -46,7 +46,7 @@ const description = "33 questions pour préparer votre brevet de plongeur Niveau
 
   <div class="result-screen" id="result-screen">
     <div class="page-tag">Résultat final</div>
-    <div class="result-score" id="final-score">0/33</div>
+    <div class="result-score" id="final-score">0/37</div>
     <div class="result-label">questions correctes</div>
     <div class="result-msg" id="result-msg"></div>
     <div class="result-sub" id="result-sub"></div>
@@ -291,7 +291,7 @@ const questions = [
     explication: "Le Valsalva consiste à se pincer le nez et à souffler doucement. Cela crée une surpression dans le nasopharynx qui ouvre la trompe d'Eustache et équilibre la pression dans l'oreille moyenne."
   },
 
-  // THÈME 3 : DÉSATURATION ET REMONTÉE (5 questions)
+  // THÈME 3 : DÉSATURATION ET REMONTÉE (6 questions)
   {
     theme: "Désaturation",
     q: "Qu'est-ce qui peut causer un accident de désaturation (ADD) ?",
@@ -320,8 +320,22 @@ const questions = [
     correct: 1,
     explication: "Un palier de sécurité à 3 mètres pendant 3 minutes est recommandé en plongée loisir même si les tables ne l'imposent pas. Il permet d'éliminer un surplus d'azote avant de remonter."
   },
+  {
+    theme: "Désaturation",
+    q: "Quel gaz, dissous dans l'organisme sous l'effet de la pression, est responsable de l'accident de désaturation ?",
+    options: ["L'oxygène", "L'azote", "Le gaz carbonique", "L'hélium"],
+    correct: 1,
+    explication: "Sous l'effet de la pression, l'azote de l'air respiré se dissout dans les tissus. Lors de la remontée, s'il ne s'évacue pas progressivement par les poumons (remontée trop rapide, palier non respecté), il forme des bulles responsables de l'accident de désaturation."
+  },
+  {
+    theme: "Désaturation",
+    q: "Lequel de ces facteurs augmente le risque d'accident de désaturation ?",
+    options: ["Une bonne hydratation", "Le froid et l'effort", "Une remontée maîtrisée", "Le respect des paliers"],
+    correct: 1,
+    explication: "Le froid, l'effort, la déshydratation, la fatigue ou les plongées successives augmentent le risque d'accident de désaturation. À l'inverse, une bonne hydratation, une remontée maîtrisée et le respect des paliers le réduisent."
+  },
 
-  // THÈME 4 : MATÉRIEL ET ÉQUIPEMENT (5 questions)
+  // THÈME 4 : MATÉRIEL ET ÉQUIPEMENT (6 questions)
   {
     theme: "Matériel",
     q: "Avant chaque plongée, le plongeur doit vérifier :",
@@ -349,6 +363,20 @@ const questions = [
     options: ["Rangé dans la poche du gilet", "Facilement accessible, visible et attaché sur le gilet", "Tenu à la main pendant la plongée", "Gardé dans le sac de plongée"],
     correct: 1,
     explication: "L'octopus doit être facilement accessible en cas de panne d'air d'un équipier. Il doit être attaché sur le gilet dans une zone visible (triangle de sécurité), généralement sur le devant."
+  },
+  {
+    theme: "Matériel",
+    q: "À quoi sert le détendeur ?",
+    options: ["À gonfler le gilet stabilisateur", "À fournir l'air à la pression ambiante pour respirer", "À indiquer la profondeur", "À réchauffer le plongeur"],
+    correct: 1,
+    explication: "Le détendeur délivre l'air de la bouteille à la pression ambiante — celle qui règne autour du plongeur. Cela lui permet de respirer normalement quelle que soit la profondeur."
+  },
+  {
+    theme: "Matériel",
+    q: "À quoi sert le manomètre ?",
+    options: ["À indiquer la profondeur", "À indiquer la pression d'air restant dans la bouteille", "À donner l'heure de la plongée", "À mesurer la température de l'eau"],
+    correct: 1,
+    explication: "Le manomètre indique la pression restante dans la bouteille, donc la quantité d'air dont dispose encore le plongeur. Le consulter régulièrement est essentiel pour la sécurité."
   },
 
   // THÈME 5 : RÉGLEMENTATION ET PRÉROGATIVES (5 questions)
