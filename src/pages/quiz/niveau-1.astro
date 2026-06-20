@@ -97,7 +97,7 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
     .quiz-container { max-width: 800px; margin: 0 auto; padding: 2.5rem 2.5rem 4.5rem; }
 
 /* PROGRESS */
-    .progress-bar-wrap { background: var(--bordure); border-radius: 99px; height: 6px; margin-bottom: 2rem; }
+    .progress-bar-wrap { background: var(--bordure); border-radius: 99px; height: 6px; margin-bottom: 1.5rem; }
 
 .progress-bar { background: var(--bleu-mer); height: 6px; border-radius: 99px; transition: width 0.4s ease; }
 
@@ -144,7 +144,7 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
 .option-btn.show-correct .option-letter { background: var(--vert); color: white; }
 
 /* EXPLICATION */
-    .explication { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 10px; font-size: 0.88rem; line-height: 1.6; display: none; }
+    .explication { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 10px; font-size: 0.88rem; line-height: 1.6; display: none; scroll-margin-bottom: 5.5rem; }
 
 .explication.correct { background: #E8F5EE; color: #1A5C30; border-left: 3px solid var(--vert); }
 
@@ -563,14 +563,22 @@ function selectAnswer(selected) {
   }
 
   document.getElementById('quiz-nav').classList.add('visible');
+  document.getElementById('explication').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   updateProgress();
+}
+
+function scrollToQuiz() {
+  const el = document.querySelector('.quiz-container');
+  if (!el) return;
+  const y = el.getBoundingClientRect().top + window.scrollY - 76;
+  window.scrollTo({ top: y, behavior: 'smooth' });
 }
 
 function nextQuestion() {
   currentQ++;
   if (currentQ < questions.length) {
     renderQuestion();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    scrollToQuiz();
   } else {
     showResults();
   }
@@ -639,5 +647,6 @@ function restartQuiz() {
 }
 
 renderQuestion();
+setTimeout(scrollToQuiz, 150);
 </script>
 </Layout>
