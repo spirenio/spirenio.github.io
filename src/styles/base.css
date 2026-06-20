@@ -1,0 +1,69 @@
+/* ============================================================
+   base.css — coquille commune Spirenio
+   En-tête, menu, pied de page, couleurs et typographie.
+   Écrit UNE seule fois, partagé par toutes les pages via le Layout.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bleu-nuit:  #1A3A5C;
+  --bleu-mer:   #2E86C1;
+  --bleu-ciel:  #7EC8E3;
+  --blanc-mer:  #EDF5FC;
+  --blanc-pur:  #FFFFFF;
+  --ambre:      #F5A623;
+  --vert:       #27AE60;
+  --rouge:      #E74C3C;
+  --gris-doux:  #F4F8FC;
+  --texte-sec:  #4A6A8A;
+  --bordure:    #D5E8F5;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--blanc-pur);
+  color: var(--bleu-nuit);
+  overflow-x: hidden;
+}
+
+/* ── EN-TÊTE ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--bordure);
+  padding: 0 2.5rem; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 400; color: var(--bleu-nuit); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.logo-icon { width: 28px; height: 28px; }
+nav { display: flex; gap: 2rem; align-items: center; }
+nav a { font-size: 0.875rem; font-weight: 400; color: var(--texte-sec); text-decoration: none; transition: color 0.2s; }
+nav a:hover { color: var(--bleu-mer); }
+nav a.actif { color: var(--bleu-mer); font-weight: 500; }
+.btn-nav { background: var(--bleu-mer); color: white !important; padding: 0.45rem 1.1rem; border-radius: 99px; font-weight: 500 !important; transition: background 0.2s, transform 0.1s !important; }
+.btn-nav:hover { background: var(--bleu-nuit) !important; transform: translateY(-1px); }
+
+/* ── PIED DE PAGE ── */
+footer {
+  background: var(--bleu-nuit); color: rgba(255,255,255,0.5);
+  padding: 2rem 2.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-logo { font-family: 'Lora', serif; font-size: 1.1rem; color: rgba(255,255,255,0.8); }
+footer nav { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+footer nav a { font-size: 0.8rem; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+footer nav a:hover { color: rgba(255,255,255,0.8); }
+footer p { font-size: 0.78rem; }
+
+/* ── ANIMATION COMMUNE ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+.anim { animation: fadeUp 0.4s ease both; }
+
+/* ── RESPONSIVE COMMUN ── */
+@media (max-width: 768px) {
+  nav a:not(.btn-nav) { display: none; }
+}

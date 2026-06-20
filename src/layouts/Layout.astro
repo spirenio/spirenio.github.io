@@ -1,0 +1,58 @@
+---
+import '../styles/base.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = '' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  {description && <meta name="description" content={description} />}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <slot name="head" />
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">
+    <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="14" cy="14" r="11" stroke="#2E86C1" stroke-width="1.5"/>
+      <circle cx="14" cy="14" r="4.5" fill="#2E86C1" opacity="0.35"/>
+      <line x1="14" y1="3" x2="14" y2="8" stroke="#2E86C1" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+    spirenio
+  </a>
+  <nav>
+    <a href="/outils/">Outils</a>
+    <a href="/quiz/">Quiz FFESSM</a>
+    <a href="/ressources/">Ressources</a>
+    <a href="/premium/" class="btn-nav">Pro</a>
+  </nav>
+</header>
+
+<slot />
+
+<footer>
+  <span class="footer-logo">spirenio</span>
+  <nav>
+    <a href="/outils/">Outils</a>
+    <a href="/quiz/">Quiz</a>
+    <a href="/ressources/">Ressources</a>
+    <a href="/mentions-legales/">Mentions légales</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+  <p>© 2026 Spirenio · Tous droits réservés</p>
+</footer>
+
+</body>
+</html>

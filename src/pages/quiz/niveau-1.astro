@@ -1,0 +1,610 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const title = "Quiz Plongeur Niveau 1 FFESSM — Préparez votre N1 | Spirenio";
+const description = "33 questions pour préparer votre brevet de plongeur Niveau 1 FFESSM (PE20). Physique, accidents, désaturation, matériel, réglementation, signaux, environnement.";
+---
+
+<Layout title={title} description={description}>
+<Fragment slot="head">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Quiz",
+    "name": "Quiz Plongeur Niveau 1 FFESSM",
+    "description": "33 questions pour préparer le brevet de plongeur Niveau 1 FFESSM (PE20). Basé sur le Manuel de Formation Technique FFESSM décembre 2025.",
+    "educationalLevel": "Plongeur Niveau 1 FFESSM",
+    "about": { "@type": "Thing", "name": "Plongée sous-marine FFESSM Niveau 1" }
+  }
+</script>
+</Fragment>
+
+<div class="breadcrumb">
+  <a href="/">Accueil</a><span>›</span>
+  <a href="/quiz/">Quiz FFESSM</a><span>›</span>
+  Niveau 1
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner anim">
+    <span class="page-tag">Quiz FFESSM</span>
+    <h1 class="page-title">Quiz Plongeur Niveau 1<br><em style="font-style:italic; color:var(--bleu-mer);">PE20 — Plongeur encadré à 20 m</em></h1>
+    <p class="page-sub">33 questions réparties en 7 thèmes pour préparer votre brevet N1 FFESSM. Basé sur le Manuel de Formation Technique FFESSM — version décembre 2025. Correction immédiate avec explication à chaque question.</p>
+  </div>
+</div>
+
+<div class="quiz-container">
+
+  <div class="progress-text">
+    <span id="progress-label">Question 1 / 33</span>
+    <span id="score-label">Score : 0 / 0</span>
+  </div>
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+  </div>
+
+  <div id="quiz-area"></div>
+
+  <div class="result-screen" id="result-screen">
+    <div class="page-tag">Résultat final</div>
+    <div class="result-score" id="final-score">0/33</div>
+    <div class="result-label">questions correctes</div>
+    <div class="result-msg" id="result-msg"></div>
+    <div class="result-sub" id="result-sub"></div>
+    <div class="theme-scores" id="theme-scores"></div>
+    <button class="btn-restart" onclick="restartQuiz()">Recommencer le quiz</button>
+  </div>
+
+</div>
+
+<div class="autres-outils">
+  <div class="autres-inner">
+    <p class="autres-titre">Autres quiz FFESSM</p>
+    <div class="autres-grid">
+      <a href="/quiz/niveau-2/" class="autre-card">
+        <span class="autre-emoji">📋</span>
+        <div><div class="autre-name">Quiz Niveau 2</div><div class="autre-desc">Plongeur autonome PE40</div></div>
+      </a>
+      <a href="/quiz/niveau-3/" class="autre-card">
+        <span class="autre-emoji">📋</span>
+        <div><div class="autre-name">Quiz Niveau 3</div><div class="autre-desc">Directeur de palanquée PA60</div></div>
+      </a>
+      <a href="/quiz/niveau-4/" class="autre-card">
+        <span class="autre-emoji">📋</span>
+        <div><div class="autre-name">Quiz Niveau 4</div><div class="autre-desc">Plongeur autonome toutes profondeurs</div></div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+.breadcrumb { margin-top: 64px; padding: 1rem 2.5rem; font-size: 0.8rem; color: var(--texte-sec); background: var(--gris-doux); border-bottom: 1px solid var(--bordure); }
+
+.breadcrumb a { color: var(--bleu-mer); text-decoration: none; }
+
+.breadcrumb span { margin: 0 6px; }
+
+.page-hero { background: linear-gradient(160deg, var(--blanc-pur) 0%, var(--blanc-mer) 100%); padding: 3rem 2.5rem 2rem; border-bottom: 1px solid var(--bordure); }
+
+.page-hero-inner { max-width: 800px; margin: 0 auto; }
+
+.page-tag { display: inline-block; font-size: 0.75rem; font-weight: 500; color: var(--bleu-mer); background: var(--blanc-mer); border: 1px solid var(--bordure); padding: 0.3rem 0.85rem; border-radius: 99px; margin-bottom: 1rem; }
+
+.page-title { font-family: 'Lora', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 500; line-height: 1.2; color: var(--bleu-nuit); margin-bottom: 0.75rem; }
+
+.page-sub { font-size: 1rem; color: var(--texte-sec); line-height: 1.7; font-weight: 300; max-width: 600px; text-align: justify; }
+
+/* QUIZ CONTAINER */
+    .quiz-container { max-width: 800px; margin: 0 auto; padding: 2.5rem; }
+
+/* PROGRESS */
+    .progress-bar-wrap { background: var(--bordure); border-radius: 99px; height: 6px; margin-bottom: 2rem; }
+
+.progress-bar { background: var(--bleu-mer); height: 6px; border-radius: 99px; transition: width 0.4s ease; }
+
+.progress-text { font-size: 0.82rem; color: var(--texte-sec); margin-bottom: 8px; display: flex; justify-content: space-between; }
+
+/* THÈME BADGE */
+    .theme-badge { display: inline-block; font-size: 0.75rem; font-weight: 500; color: var(--bleu-mer); background: var(--blanc-mer); border: 1px solid var(--bordure); padding: 0.25rem 0.8rem; border-radius: 99px; margin-bottom: 1rem; }
+
+/* QUESTION CARD */
+    .question-card { background: white; border: 1px solid var(--bordure); border-radius: 20px; padding: 2rem; box-shadow: 0 4px 24px rgba(26,58,92,0.06); margin-bottom: 1.5rem; }
+
+.question-num { font-size: 0.78rem; color: var(--texte-sec); margin-bottom: 0.75rem; }
+
+.question-text { font-family: 'Lora', serif; font-size: 1.15rem; font-weight: 500; color: var(--bleu-nuit); line-height: 1.5; margin-bottom: 1.5rem; }
+
+/* OPTIONS */
+    .options { display: flex; flex-direction: column; gap: 10px; }
+
+.option-btn {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--gris-doux); border: 1.5px solid var(--bordure);
+      border-radius: 12px; padding: 0.85rem 1rem;
+      cursor: pointer; text-align: left;
+      transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem; color: var(--bleu-nuit); width: 100%;
+    }
+
+.option-btn:hover:not(:disabled) { border-color: var(--bleu-mer); background: var(--blanc-mer); }
+
+.option-btn.correct { background: #E8F5EE; border-color: var(--vert); color: #1A5C30; }
+
+.option-btn.wrong { background: #FDECEA; border-color: var(--rouge); color: #7A1A1A; }
+
+.option-btn.show-correct { background: #E8F5EE; border-color: var(--vert); color: #1A5C30; }
+
+.option-btn:disabled { cursor: default; }
+
+.option-letter { width: 28px; height: 28px; border-radius: 50%; background: var(--bordure); display: flex; align-items: center; justify-content: center; font-size: 0.78rem; font-weight: 500; flex-shrink: 0; }
+
+.option-btn.correct .option-letter { background: var(--vert); color: white; }
+
+.option-btn.wrong .option-letter { background: var(--rouge); color: white; }
+
+.option-btn.show-correct .option-letter { background: var(--vert); color: white; }
+
+/* EXPLICATION */
+    .explication { margin-top: 1rem; padding: 0.85rem 1rem; border-radius: 10px; font-size: 0.88rem; line-height: 1.6; display: none; }
+
+.explication.correct { background: #E8F5EE; color: #1A5C30; border-left: 3px solid var(--vert); }
+
+.explication.wrong { background: #FDECEA; color: #7A1A1A; border-left: 3px solid var(--rouge); }
+
+.explication.visible { display: block; }
+
+/* NAV */
+    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+
+.btn-next { background: var(--bleu-mer); color: white; border: none; padding: 0.75rem 1.75rem; border-radius: 99px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s; display: none; }
+
+.btn-next:hover { background: var(--bleu-nuit); transform: translateY(-1px); }
+
+.btn-next.visible { display: block; }
+
+/* RÉSULTAT FINAL */
+    .result-screen { display: none; background: white; border: 1px solid var(--bordure); border-radius: 20px; padding: 3rem 2rem; text-align: center; box-shadow: 0 4px 24px rgba(26,58,92,0.06); }
+
+.result-screen.visible { display: block; }
+
+.result-score { font-family: 'Lora', serif; font-size: 4rem; font-weight: 500; color: var(--bleu-mer); line-height: 1; margin: 1rem 0 0.5rem; }
+
+.result-label { font-size: 1rem; color: var(--texte-sec); margin-bottom: 1.5rem; }
+
+.result-msg { font-size: 1.1rem; font-weight: 500; color: var(--bleu-nuit); margin-bottom: 0.5rem; }
+
+.result-sub { font-size: 0.9rem; color: var(--texte-sec); margin-bottom: 2rem; }
+
+/* THÈME SCORES */
+    .theme-scores { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin: 1.5rem 0; text-align: left; }
+
+.theme-score-card { background: var(--gris-doux); border-radius: 12px; padding: 0.85rem 1rem; }
+
+.theme-score-name { font-size: 0.8rem; font-weight: 500; color: var(--bleu-nuit); margin-bottom: 4px; }
+
+.theme-score-val { font-size: 1.1rem; font-weight: 500; color: var(--bleu-mer); }
+
+.theme-score-bar-wrap { background: var(--bordure); border-radius: 99px; height: 4px; margin-top: 6px; }
+
+.theme-score-bar { height: 4px; border-radius: 99px; background: var(--bleu-mer); }
+
+.btn-restart { background: var(--bleu-nuit); color: white; border: none; padding: 0.75rem 2rem; border-radius: 99px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s; margin-top: 1rem; }
+
+.btn-restart:hover { background: var(--bleu-mer); }
+
+.autres-outils { background: var(--gris-doux); border-top: 1px solid var(--bordure); padding: 3rem 2.5rem; }
+
+.autres-inner { max-width: 800px; margin: 0 auto; }
+
+.autres-titre { font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 500; color: var(--bleu-nuit); margin-bottom: 1.25rem; }
+
+.autres-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+
+.autre-card { background: white; border: 1px solid var(--bordure); border-radius: 12px; padding: 1rem 1.25rem; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 12px; }
+
+.autre-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,58,92,0.09); }
+
+.autre-emoji { font-size: 1.5rem; }
+
+.autre-name { font-size: 0.9rem; font-weight: 500; color: var(--bleu-nuit); }
+
+.autre-desc { font-size: 0.78rem; color: var(--texte-sec); margin-top: 2px; }
+
+@media (max-width: 768px) {
+      .quiz-container { padding: 1.5rem; }
+      nav a:not(.btn-nav) { display: none; }
+    }
+</style>
+<script is:inline>
+const questions = [
+
+  // THÈME 1 : PHYSIQUE (5 questions)
+  {
+    theme: "Physique",
+    q: "À 20 mètres de profondeur, quelle est la pression absolue ?",
+    options: ["1 bar", "2 bars", "3 bars", "4 bars"],
+    correct: 2,
+    explication: "La pression absolue = pression atmosphérique (1 bar) + pression hydrostatique (1 bar tous les 10 m). À 20 m : 1 + 2 = 3 bars."
+  },
+  {
+    theme: "Physique",
+    q: "Sous l'eau, les objets paraissent :",
+    options: ["Plus petits et plus éloignés", "Plus grands et plus proches", "De la même taille", "Plus grands et plus éloignés"],
+    correct: 1,
+    explication: "La réfraction de la lumière à l'interface eau/masque fait paraître les objets plus grands d'environ 1/4 et plus proches d'environ 1/4."
+  },
+  {
+    theme: "Physique",
+    q: "Un plongeur descend de la surface à 10 m sans rien faire. Que devient le volume d'air contenu dans son masque ?",
+    options: ["Il reste identique", "Il augmente de moitié", "Il est divisé par deux", "Il est divisé par quatre"],
+    correct: 2,
+    explication: "La pression passe de 1 à 2 bars. D'après la loi de Boyle-Mariotte, le volume est divisé par deux. C'est pourquoi il faut souffler par le nez dans le masque en descendant, sous peine de plaquage de masque."
+  },
+  {
+    theme: "Physique",
+    q: "Un plongeur en flottabilité neutre :",
+    options: ["Coule lentement", "Remonte lentement", "Reste à la même profondeur sans effort", "Doit palmer pour rester en place"],
+    correct: 2,
+    explication: "La flottabilité neutre signifie que la poussée d'Archimède est égale au poids du plongeur. Il n'y a ni montée ni descente spontanée."
+  },
+  {
+    theme: "Physique",
+    q: "Sous l'eau, les sons se propagent :",
+    options: ["Moins vite qu'en surface", "À la même vitesse qu'en surface", "Plus vite qu'en surface", "Ne se propagent pas"],
+    correct: 2,
+    explication: "Le son se propage environ 4 fois plus vite dans l'eau que dans l'air, ce qui rend la localisation des sons difficile sous l'eau."
+  },
+
+  // THÈME 2 : ACCIDENTS ET BAROTRAUMATISMES (5 questions)
+  {
+    theme: "Accidents",
+    q: "Le barotraumatisme de l'oreille moyenne lors de la descente est dû à :",
+    options: ["Une remontée trop rapide", "Un défaut d'équilibrage des pressions lors de la descente", "Un masque trop serré", "Une mauvaise ventilation"],
+    correct: 1,
+    explication: "Lors de la descente, la pression externe augmente. Si le plongeur n'équilibre pas (Valsalva, BTV, Frenzel), la pression dans l'oreille moyenne est inférieure à la pression externe, pouvant causer une douleur ou une rupture du tympan."
+  },
+  {
+    theme: "Accidents",
+    q: "Le plaquage de masque survient :",
+    options: ["À la remontée", "Lors de la descente, si l'on n'expire pas par le nez dans le masque", "En surface uniquement", "En cas de courant fort"],
+    correct: 1,
+    explication: "Lors de la descente, la pression externe augmente et comprime le volume d'air du masque. Si le plongeur n'expire pas par le nez pour équilibrer, le masque se plaque sur le visage."
+  },
+  {
+    theme: "Accidents",
+    q: "La surpression pulmonaire peut survenir :",
+    options: ["Uniquement lors de plongées profondes", "Si le plongeur bloque sa respiration lors de la remontée", "Seulement en cas de panne d'air", "Lors de la descente uniquement"],
+    correct: 1,
+    explication: "Lors de la remontée, l'air se dilate. Si le plongeur bloque sa respiration ou n'expire pas suffisamment, l'air ne peut pas s'échapper et les alvéoles pulmonaires peuvent se rompre. C'est un accident grave."
+  },
+  {
+    theme: "Accidents",
+    q: "L'essoufflement en plongée est principalement causé par :",
+    options: ["Un effort physique trop important ou une mauvaise technique ventilatoire", "Une profondeur excessive", "Un équipement trop lourd", "Une eau trop froide"],
+    correct: 0,
+    explication: "L'essoufflement résulte d'une accumulation de CO₂. Il est favorisé par un effort important, une ventilation insuffisante ou une mauvaise technique (ventilation trop superficielle)."
+  },
+  {
+    theme: "Accidents",
+    q: "La technique de Valsalva consiste à :",
+    options: ["Expirer fort par le nez", "Se pincer le nez et souffler doucement pour équilibrer les oreilles", "Avaler sa salive plusieurs fois", "Bouger la mâchoire de gauche à droite"],
+    correct: 1,
+    explication: "Le Valsalva consiste à se pincer le nez et à souffler doucement. Cela crée une surpression dans le nasopharynx qui ouvre la trompe d'Eustache et équilibre la pression dans l'oreille moyenne."
+  },
+
+  // THÈME 3 : DÉSATURATION ET REMONTÉE (5 questions)
+  {
+    theme: "Désaturation",
+    q: "Qu'est-ce qui peut causer un accident de désaturation (ADD) ?",
+    options: ["Une remontée trop lente", "La formation de bulles d'azote dans les tissus lors d'une remontée trop rapide", "Un manque d'oxygène", "Un excès de CO₂"],
+    correct: 1,
+    explication: "Lors de la plongée, l'azote se dissout dans les tissus sous l'effet de la pression. Si la remontée est trop rapide, l'azote ne peut pas être éliminé correctement et forme des bulles dans les tissus et le sang."
+  },
+  {
+    theme: "Désaturation",
+    q: "Quelle vitesse de remontée les tables MN90 imposent-elles ?",
+    options: ["6 à 9 m/min", "10 à 14 m/min", "15 à 17 m/min", "18 à 20 m/min"],
+    correct: 2,
+    explication: "Les tables MN90 fixent une vitesse de remontée de 15 à 17 m/min entre le fond et le premier palier (ou la surface)."
+  },
+  {
+    theme: "Désaturation",
+    q: "Qu'est-ce que la courbe de plongée sans palier ?",
+    options: ["Une plongée sans équipement", "La durée maximale à une profondeur donnée permettant de remonter directement sans palier obligatoire", "Une plongée en apnée", "Une plongée à moins de 6 mètres"],
+    correct: 1,
+    explication: "La courbe sans palier (ou courbe de sécurité) définit la durée maximale passée à une profondeur donnée au-delà de laquelle un palier de décompression devient obligatoire."
+  },
+  {
+    theme: "Désaturation",
+    q: "Le palier de sécurité recommandé en plongée loisir est généralement effectué :",
+    options: ["À 5 m pendant 3 minutes", "À 3 m pendant 3 minutes", "À 10 m pendant 5 minutes", "À 5 m pendant 5 minutes"],
+    correct: 1,
+    explication: "Un palier de sécurité à 3 mètres pendant 3 minutes est recommandé en plongée loisir même si les tables ne l'imposent pas. Il permet d'éliminer un surplus d'azote avant de remonter."
+  },
+
+  // THÈME 4 : MATÉRIEL ET ÉQUIPEMENT (5 questions)
+  {
+    theme: "Matériel",
+    q: "Avant chaque plongée, le plongeur doit vérifier :",
+    options: ["Uniquement la pression de la bouteille", "La pression de la bouteille, le bon fonctionnement du gilet et du détendeur", "Seulement le détendeur", "Le lestage uniquement"],
+    correct: 1,
+    explication: "Avant chaque plongée, le plongeur doit vérifier la pression de la bouteille, le bon fonctionnement du gilet stabilisateur (inflateur et purges) et du détendeur (débit d'air, octopus)."
+  },
+  {
+    theme: "Matériel",
+    q: "En eau salée, par rapport à l'eau douce, le lestage doit être :",
+    options: ["Identique", "Plus important", "Moins important", "Cela n'a aucune influence"],
+    correct: 1,
+    explication: "L'eau salée est plus dense que l'eau douce, ce qui augmente la poussée d'Archimède. Le plongeur flotte plus facilement en eau salée et doit donc porter plus de lest pour s'immerger."
+  },
+  {
+    theme: "Matériel",
+    q: "Après une plongée en mer, le matériel doit être :",
+    options: ["Rangé directement sans nettoyage", "Rincé à l'eau douce", "Séché immédiatement au soleil", "Désinfecté avec de l'alcool"],
+    correct: 1,
+    explication: "Le matériel doit être rincé à l'eau douce après chaque plongée en mer pour éliminer le sel, le sable et les débris qui pourraient endommager les équipements."
+  },
+  {
+    theme: "Matériel",
+    q: "L'octopus (détendeur de secours) doit être :",
+    options: ["Rangé dans la poche du gilet", "Facilement accessible, visible et attaché sur le gilet", "Tenu à la main pendant la plongée", "Gardé dans le sac de plongée"],
+    correct: 1,
+    explication: "L'octopus doit être facilement accessible en cas de panne d'air d'un équipier. Il doit être attaché sur le gilet dans une zone visible (triangle de sécurité), généralement sur le devant."
+  },
+
+  // THÈME 5 : RÉGLEMENTATION ET PRÉROGATIVES (5 questions)
+  {
+    theme: "Réglementation",
+    q: "Le plongeur Niveau 1 (PE20) peut plonger jusqu'à :",
+    options: ["40 mètres avec un guide de palanquée", "20 mètres avec un guide de palanquée", "60 mètres avec un directeur de plongée", "20 mètres en autonomie"],
+    correct: 1,
+    explication: "Le N1 (PE20) est autorisé à évoluer jusqu'à 20 mètres, au sein d'une palanquée encadrée par un guide de palanquée (GP), dans le cadre d'une organisation mise en place par un directeur de plongée (DP)."
+  },
+  {
+    theme: "Réglementation",
+    q: "Quel est l'âge minimum pour accéder à la formation N1 FFESSM ?",
+    options: ["10 ans", "12 ans", "14 ans", "16 ans"],
+    correct: 1,
+    explication: "L'accès à la formation N1 est possible dès 12 ans, avec autorisation d'un responsable légal pour les mineurs, conformément au MFT FFESSM décembre 2025."
+  },
+  {
+    theme: "Réglementation",
+    q: "Le rôle du Directeur de Plongée (DP) est :",
+    options: ["Guider la palanquée sous l'eau", "Organiser et superviser la sécurité de l'activité plongée depuis la surface", "Former les plongeurs débutants", "Gérer le matériel du club"],
+    correct: 1,
+    explication: "Le Directeur de Plongée (DP) est responsable de l'organisation et de la sécurité de l'activité. Il définit les conditions de plongée, les palanquées et les consignes. Il n'est pas nécessairement à l'eau."
+  },
+  {
+    theme: "Réglementation",
+    q: "Pour plonger, le plongeur N1 doit obligatoirement posséder :",
+    options: ["Uniquement son brevet N1", "Son brevet N1, sa licence fédérale en cours de validité et un certificat médical de non contre-indication", "Son brevet N1 et une assurance personnelle", "Uniquement une licence fédérale"],
+    correct: 1,
+    explication: "Pour plonger dans le cadre FFESSM, le plongeur doit être titulaire de son brevet, avoir sa licence fédérale en cours de validité et un certificat médical d'absence de contre-indication à la plongée."
+  },
+  {
+    theme: "Réglementation",
+    q: "Le N1 certifié en milieu artificiel (piscine) doit réaliser au moins 4 plongées en milieu naturel dans les :",
+    options: ["6 mois suivant l'obtention", "12 mois suivant l'obtention", "24 mois suivant l'obtention", "Cette obligation n'existe pas"],
+    correct: 1,
+    explication: "Selon le MFT FFESSM, un N1 certifié en milieu artificiel doit réaliser au moins 4 plongées en milieu naturel attestées sur son carnet de plongée dans les 12 mois suivant l'obtention."
+  },
+
+  // THÈME 6 : SIGNAUX DE COMMUNICATION (5 questions)
+  {
+    theme: "Communication",
+    q: "Le signal 'OK' sous l'eau se fait :",
+    options: ["Pouce levé", "Pouce et index formant un cercle, autres doigts écartés", "Main ouverte, paume vers l'avant", "Index pointé vers le haut"],
+    correct: 1,
+    explication: "Le signal OK se fait en formant un cercle avec le pouce et l'index. Attention : le pouce levé signifie 'je remonte' et non 'OK' en plongée."
+  },
+  {
+    theme: "Communication",
+    q: "Le signal 'Panne d'air' se réalise en :",
+    options: ["Pointant vers la bouteille", "Passant la main tranchante horizontalement sur la gorge en un geste de tranchage", "Agitant les bras", "Montrant le manomètre"],
+    correct: 1,
+    explication: "Le signal panne d'air se fait en passant la main tranchante horizontalement sur la gorge. Ce signal doit être immédiatement suivi d'une action : partage d'air avec l'octopus du GP."
+  },
+  {
+    theme: "Communication",
+    q: "Le signal 'Mi-pression' indique que :",
+    options: ["Le plongeur veut remonter", "Le plongeur a consommé la moitié de sa bouteille", "Il y a un problème avec le détendeur", "Le plongeur est essoufflé"],
+    correct: 1,
+    explication: "Le signal mi-pression (main à plat, horizontale, balancée de gauche à droite) indique que le plongeur a consommé la moitié de sa réserve d'air. C'est une information importante pour le GP."
+  },
+  {
+    theme: "Communication",
+    q: "Pour signaler 'Je remonte' ou 'On remonte', le plongeur effectue :",
+    options: ["Le signe OK", "Pouce levé vers le haut", "Index pointé vers le bas", "Main ouverte agitée"],
+    correct: 1,
+    explication: "Le pouce levé vers le haut signifie 'je remonte' ou 'on remonte'. Ce signal ne doit pas être confondu avec le OK anglophone. En plongée française, le pouce levé = remontée."
+  },
+  {
+    theme: "Communication",
+    q: "Le signal 'Ça ne va pas' se réalise en :",
+    options: ["Croisant les bras", "Agitant la main ouverte de gauche à droite (geste 'bof')", "Pointant vers le bas", "Signe de la croix avec les index"],
+    correct: 1,
+    explication: "Le signal 'Ça ne va pas' se fait en agitant la main ouverte de gauche à droite (comme le geste 'comme ci comme ça'). Il doit toujours recevoir une réponse du GP pour identifier le problème."
+  },
+
+  // THÈME 7 : MILIEU ET ENVIRONNEMENT (5 questions)
+  {
+    theme: "Environnement",
+    q: "La Charte internationale du plongeur responsable préconise notamment :",
+    options: ["De toucher les fonds pour mieux les observer", "De ne pas toucher, prélever ou déranger la faune et la flore", "De nourrir les poissons pour les attirer", "De collecter quelques souvenirs naturels"],
+    correct: 1,
+    explication: "La Charte internationale du plongeur responsable recommande de ne pas toucher, harceler ou déranger les organismes marins, de ne rien prélever et de minimiser son impact sur l'environnement."
+  },
+  {
+    theme: "Environnement",
+    q: "Un palmage non maîtrisé peut endommager les fonds marins car :",
+    options: ["Il crée des bulles trop nombreuses", "Il remue les sédiments et peut briser les coraux ou gorgones", "Il effraye les poissons", "Il perturbe la communication sous-marine"],
+    correct: 1,
+    explication: "Un palmage non contrôlé peut remettre les sédiments en suspension (réduisant la visibilité), briser des organismes fragiles comme les coraux et gorgones, ou déranger la faune benthique."
+  },
+  {
+    theme: "Environnement",
+    q: "Le froid en plongée peut entraîner :",
+    options: ["Une augmentation des performances", "Une accélération de la consommation d'air, une fatigue accrue et des risques d'accidents", "Un meilleur équilibre", "Une réduction du risque d'ADD"],
+    correct: 1,
+    explication: "Le froid augmente la consommation d'air, provoque une fatigue musculaire, réduit la dextérité et les capacités de réaction. Il augmente également le risque de crampes et peut contribuer aux accidents."
+  },
+  {
+    theme: "Environnement",
+    q: "Face à un animal marin potentiellement dangereux, le plongeur N1 doit :",
+    options: ["S'approcher pour l'observer de près", "Rester calme, ne pas faire de geste brusque et s'éloigner doucement", "Agiter ses palmes pour l'effrayer", "Le toucher pour évaluer le danger"],
+    correct: 1,
+    explication: "Face à un animal potentiellement dangereux (rascasse, mérou territorial, méduse...), le plongeur doit rester calme, éviter les gestes brusques et s'éloigner doucement sans tourner le dos."
+  },
+  {
+    theme: "Environnement",
+    q: "Le carnet de plongée numérique :",
+    options: ["Est uniquement réservé aux plongeurs N3 et plus", "Permet de noter ses plongées et est reconnu par la FFESSM", "Remplace le certificat médical", "N'est pas reconnu officiellement"],
+    correct: 1,
+    explication: "Le carnet de plongée numérique est reconnu par la FFESSM. Il permet de noter toutes ses plongées (site, profondeur, durée, conditions) et constitue un document officiel pouvant être présenté lors des plongées."
+  }
+
+];
+
+let currentQ = 0;
+let score = 0;
+let answered = false;
+let themeScores = {};
+
+// Initialiser les scores par thème
+questions.forEach(q => {
+  if (!themeScores[q.theme]) themeScores[q.theme] = { correct: 0, total: 0 };
+  themeScores[q.theme].total++;
+});
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  answered = false;
+
+  const area = document.getElementById('quiz-area');
+  area.innerHTML = `
+    <div class="theme-badge">${q.theme}</div>
+    <div class="question-card anim">
+      <div class="question-num">Question ${currentQ + 1} sur ${questions.length}</div>
+      <div class="question-text">${q.q}</div>
+      <div class="options" id="options">
+        ${q.options.map((opt, i) => `
+          <button class="option-btn" onclick="selectAnswer(${i})" id="opt-${i}">
+            <div class="option-letter">${['A','B','C','D'][i]}</div>
+            ${opt}
+          </button>
+        `).join('')}
+      </div>
+      <div class="explication" id="explication"></div>
+    </div>
+    <div class="quiz-nav">
+      <span></span>
+      <button class="btn-next" id="btn-next" onclick="nextQuestion()">
+        ${currentQ < questions.length - 1 ? 'Question suivante →' : 'Voir mes résultats'}
+      </button>
+    </div>
+  `;
+
+  updateProgress();
+}
+
+function selectAnswer(selected) {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[currentQ];
+  const buttons = document.querySelectorAll('.option-btn');
+  const explication = document.getElementById('explication');
+
+  buttons.forEach(btn => btn.disabled = true);
+
+  if (selected === q.correct) {
+    buttons[selected].classList.add('correct');
+    score++;
+    themeScores[q.theme].correct++;
+    explication.textContent = '✓ ' + q.explication;
+    explication.className = 'explication correct visible';
+  } else {
+    buttons[selected].classList.add('wrong');
+    buttons[q.correct].classList.add('show-correct');
+    explication.textContent = '✗ ' + q.explication;
+    explication.className = 'explication wrong visible';
+  }
+
+  document.getElementById('btn-next').classList.add('visible');
+  updateProgress();
+}
+
+function nextQuestion() {
+  currentQ++;
+  if (currentQ < questions.length) {
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  } else {
+    showResults();
+  }
+}
+
+function updateProgress() {
+  const pct = (currentQ / questions.length) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = `Question ${Math.min(currentQ + 1, questions.length)} / ${questions.length}`;
+  document.getElementById('score-label').textContent = `Score : ${score} / ${currentQ}`;
+}
+
+function showResults() {
+  document.getElementById('quiz-area').style.display = 'none';
+  document.querySelector('.progress-bar-wrap').style.display = 'none';
+  document.querySelector('.progress-text').style.display = 'none';
+
+  const pct = Math.round((score / questions.length) * 100);
+  document.getElementById('final-score').textContent = score + '/' + questions.length;
+
+  let msg, sub;
+  if (pct >= 80) {
+    msg = '🎉 Excellent ! Vous maîtrisez bien le programme N1.';
+    sub = 'Vous êtes bien préparé pour votre brevet. Continuez à pratiquer pour consolider vos acquis.';
+  } else if (pct >= 60) {
+    msg = '👍 Bon résultat, quelques points à revoir.';
+    sub = 'Reprenez les thèmes où vous avez eu des erreurs pour vous préparer au mieux.';
+  } else {
+    msg = '📚 Des révisions s\'imposent.';
+    sub = 'Consultez votre manuel de formation et travaillez thème par thème.';
+  }
+
+  document.getElementById('result-msg').textContent = msg;
+  document.getElementById('result-sub').textContent = sub;
+
+  const themeScoresEl = document.getElementById('theme-scores');
+  themeScoresEl.innerHTML = Object.entries(themeScores).map(([theme, data]) => {
+    const pctTheme = Math.round((data.correct / data.total) * 100);
+    return `
+      <div class="theme-score-card">
+        <div class="theme-score-name">${theme}</div>
+        <div class="theme-score-val">${data.correct}/${data.total}</div>
+        <div class="theme-score-bar-wrap">
+          <div class="theme-score-bar" style="width:${pctTheme}%; background: ${pctTheme >= 80 ? 'var(--vert)' : pctTheme >= 60 ? 'var(--ambre)' : 'var(--rouge)'}"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('result-screen').classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restartQuiz() {
+  currentQ = 0;
+  score = 0;
+  answered = false;
+  Object.keys(themeScores).forEach(k => { themeScores[k].correct = 0; });
+
+  document.getElementById('quiz-area').style.display = 'block';
+  document.querySelector('.progress-bar-wrap').style.display = 'block';
+  document.querySelector('.progress-text').style.display = 'flex';
+  document.getElementById('result-screen').classList.remove('visible');
+
+  renderQuestion();
+}
+
+renderQuestion();
+</script>
+</Layout>

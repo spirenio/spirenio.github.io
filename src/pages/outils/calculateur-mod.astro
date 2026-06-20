@@ -1,0 +1,768 @@
+---
+import Layout from '../../layouts/Layout.astro';
+const title = "Calculateur MOD / PMU Plongée — Profondeur Maximale d'Opération | Spirenio";
+const description = "Calculez la profondeur maximale d'opération (MOD) ou profondeur maximale d'utilisation (PMU) pour l'air et le nitrox. Outil gratuit. Limite légale en France : PPO2 1.6 bar (Code du sport).";
+---
+
+<Layout title={title} description={description}>
+<Fragment slot="head">
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "Comment calculer la MOD en plongée sous-marine",
+    "description": "La MOD (Maximum Operating Depth) est la profondeur maximale à laquelle un mélange gazeux peut être utilisé en toute sécurité selon la pression partielle d'oxygène.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Choisir le mélange gazeux",
+        "text": "Sélectionnez le pourcentage d'oxygène de votre mélange (21% pour l'air, 32% ou 36% pour le nitrox)"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Choisir la PPO2 maximale",
+        "text": "En France, la limite légale de PPO2 est fixée à 1.6 bar par le Code du sport"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Appliquer la formule",
+        "text": "MOD (en mètres) = (PPO2 max / fraction O2 - 1) × 10"
+      }
+    ]
+  }
+</script>
+</Fragment>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="/">Accueil</a>
+  <span>›</span>
+  <a href="/outils/">Outils</a>
+  <span>›</span>
+  Calculateur MOD
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner anim">
+    <span class="page-tag">Calculateur MOD / PMU</span>
+    <h1 class="page-title">Calculateur MOD / PMU<br><em style="font-style:italic; color:var(--bleu-mer);">Profondeur Maximale d'Utilisation</em></h1>
+    <p class="page-sub">Calculez instantanément la MOD pour l'air et le nitrox. Limite légale en France : PPO2 1.6 bar, fixée par le Code du sport.</p>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main-layout">
+
+  <!-- CONTENU SEO -->
+  <div class="content-col">
+
+    <h2>Qu'est-ce que la MOD / PMU en plongée ?</h2>
+    <p>La <strong>MOD (Maximum Operating Depth)</strong> et la <strong>PMU (Profondeur Maximale d'Utilisation)</strong> désignent exactement la même chose : la profondeur maximale à laquelle un mélange gazeux peut être utilisé en toute sécurité. MOD est le terme international anglophone, PMU est le terme français utilisé dans les formations FFESSM. Elle est déterminée par la <strong>pression partielle d'oxygène (PPO2)</strong> : au-delà d'un certain seuil, l'oxygène devient toxique pour le système nerveux central.</p>
+
+    <h2>Sécurité et nitrox — ce qu'il faut savoir</h2>
+    <p>La plongée au nitrox offre des avantages réels : <strong>réduction naturelle du risque d'accident de décompression (ADD)</strong>, extension des temps de non-décompression, et réduction de la fatigue. À profondeur égale, un mélange enrichi en oxygène contient moins d'azote — la charge en azote absorbée est donc moindre, ce qui réduit le risque d'ADD par rapport à une plongée à l'air. Mais elle introduit un risque spécifique lié à la <strong>toxicité oxygène</strong>. Au-delà de la limite légale de 1.6 bar de PPO2, le système nerveux central peut être affecté, provoquant des convulsions sous-marines — un accident grave en milieu immergé.</p>
+    <p>C'est pourquoi <strong>connaître et respecter la MOD de son mélange est non négociable</strong>. Avant chaque plongée nitrox, vérifiez le pourcentage d'O₂ analysé de votre bouteille, calculez votre MOD, et ne dépassez jamais cette profondeur.</p>
+
+    <div class="info-box">
+      <p>💡 <strong>En résumé :</strong> plus un mélange est riche en oxygène (nitrox), plus sa MOD est faible. C'est le principe fondamental de la plongée au nitrox.</p>
+    </div>
+
+    <h2>La limite légale en France</h2>
+    <p>En France, la limite de PPO2 en plongée loisir est fixée par le <strong>Code du sport</strong>. La PPO2 maximale autorisée est de <strong>1.6 bar</strong>.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>PPO2</th>
+          <th>Statut</th>
+          <th>Référence</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1.4 bar</strong></td>
+          <td>Valeur couramment utilisée</td>
+          <td>Usage courant en formation</td>
+        </tr>
+        <tr>
+          <td><strong>1.6 bar</strong></td>
+          <td>Limite légale</td>
+          <td>Code du sport — France</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <p>📋 <strong>Référence légale :</strong> En France, la limite de PPO2 est fixée à <strong>1.6 bar</strong> par le Code du sport.</p>
+    </div>
+
+    <h2>La formule MOD</h2>
+    <p>La formule pour calculer la MOD est simple :</p>
+
+    <div class="info-box">
+      <p><strong>MOD (mètres) = ( PPO2 max ÷ Fraction O₂ − 1 ) × 10</strong></p>
+    </div>
+
+    <h3>Exemple avec le Nitrox 32%</h3>
+    <p>Avec la limite légale de <strong>1.6 bar</strong> et un mélange à <strong>32% d'O₂</strong> :</p>
+    <p>MOD = ( 1.6 ÷ 0.32 − 1 ) × 10 = <strong>40 mètres</strong></p>
+
+    <p>Avec une PPO2 de <strong>1.4 bar</strong> :</p>
+    <p>MOD = ( 1.4 ÷ 0.32 − 1 ) × 10 = <strong>33 mètres</strong></p>
+
+    <h2>Mélanges courants et leurs MOD</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Mélange</th>
+          <th>% O₂</th>
+          <th>MOD (PPO2 1.6)</th>
+          <th>MOD (PPO2 1.4)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Air</td><td>21%</td><td>66 m</td><td>56 m</td></tr>
+        <tr><td>Nitrox 28%</td><td>28%</td><td>47 m</td><td>40 m</td></tr>
+        <tr><td><strong>Nitrox 32%</strong></td><td>32%</td><td><strong>40 m</strong></td><td><strong>33 m</strong></td></tr>
+        <tr><td>Nitrox 36%</td><td>36%</td><td>34 m</td><td>28 m</td></tr>
+        <tr><td>Nitrox 40%</td><td>40%</td><td>30 m</td><td>25 m</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Questions fréquentes</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Quelle différence entre MOD et PMU ?</div>
+      <div class="faq-a">Aucune. MOD (Maximum Operating Depth) est le terme international anglophone. PMU (Profondeur Maximale d'Utilisation) est son équivalent français, utilisé dans les formations et manuels FFESSM. Les deux désignent exactement la même valeur, calculée avec la même formule.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Pourquoi certains plongeurs utilisent 1.4 plutôt que 1.6 ?</div>
+      <div class="faq-a">La PPO2 de 1.4 bar laisse une marge par rapport à la limite légale de 1.6 bar. En plongée, il est fréquent de dépasser légèrement la profondeur prévue. Utiliser 1.4 permet de rester sous 1.6 même en cas d'excursion non prévue. C'est un choix personnel, pas une obligation réglementaire.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">La MOD s'applique-t-elle à l'air ?</div>
+      <div class="faq-a">Oui. L'air contient 21% d'oxygène. Sa MOD à PPO2 1.6 bar est d'environ 66 mètres — une profondeur théorique jamais atteinte en plongée loisir. En pratique, c'est la limite de PPn2 (pression partielle d'azote) qui contraint la plongée à l'air à 60 mètres en France, conformément à la réglementation.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Que se passe-t-il si on dépasse la MOD ?</div>
+      <div class="faq-a">Au-delà de la MOD, la PPO2 dépasse le seuil de sécurité. Cela peut provoquer une toxicité oxygène du système nerveux central (CNS toxicity) : convulsions sous-marines, pouvant entraîner la noyade. C'est l'un des accidents les plus graves en plongée nitrox.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Comment lire le résultat du calculateur ?</div>
+      <div class="faq-a">Le calculateur affiche la MOD arrondie au dixième de mètre. En pratique, arrondissez toujours à l'inférieur. Si la MOD calculée est 33.75 m, la profondeur maximale à ne pas dépasser est 33 mètres.</div>
+    </div>
+
+  </div>
+
+  <!-- CALCULATEUR -->
+  <div class="calc-card anim">
+    <div class="calc-title">
+      🫧 Calculateur MOD
+    </div>
+
+    <!-- Fraction O2 -->
+    <div class="field-group">
+      <label>
+        Fraction d'oxygène (FO₂)
+        <span class="label-hint">— <span id="fo2-display">32</span>%</span>
+      </label>
+      <input type="range" id="fo2" min="21" max="40" value="32" step="1" oninput="updateCalc()">
+      <div class="range-labels">
+        <span>Air (21%)</span>
+        <span>Nitrox 40%</span>
+      </div>
+    </div>
+
+    <!-- Préréglages rapides -->
+    <div style="display:flex; gap:6px; margin-bottom:1.25rem; flex-wrap:wrap;">
+      <button onclick="setFo2(21)" style="padding:4px 10px; border-radius:99px; border:1px solid var(--bordure); background:white; font-size:0.75rem; cursor:pointer; color:var(--texte-sec);">Air 21%</button>
+      <button onclick="setFo2(28)" style="padding:4px 10px; border-radius:99px; border:1px solid var(--bordure); background:white; font-size:0.75rem; cursor:pointer; color:var(--texte-sec);">EAN28</button>
+      <button onclick="setFo2(32)" style="padding:4px 10px; border-radius:99px; border:1px solid var(--bordure); background:white; font-size:0.75rem; cursor:pointer; color:var(--texte-sec);">EAN32</button>
+      <button onclick="setFo2(36)" style="padding:4px 10px; border-radius:99px; border:1px solid var(--bordure); background:white; font-size:0.75rem; cursor:pointer; color:var(--texte-sec);">EAN36</button>
+    </div>
+
+    <!-- PPO2 Toggle -->
+    <div class="field-group">
+      <label>PPO2 maximale <span class="label-hint">— limite légale France : 1.6 bar</span></label>
+      <div class="ppo2-toggle">
+        <div class="ppo2-btn" id="btn-14" onclick="setPpo2(1.4)">
+          <span class="val">1.4 bar</span>
+        </div>
+        <div class="ppo2-btn active" id="btn-16" onclick="setPpo2(1.6)">
+          <span class="val">1.6 bar</span>
+          <div class="desc">Limite légale en France</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RÉSULTAT -->
+    <div class="result-box">
+      <div class="result-main">
+        <div class="result-label">Profondeur maximale d'opération</div>
+        <div>
+          <span class="result-value" id="mod-result">40</span>
+          <span class="result-unit">m</span>
+        </div>
+        <div class="result-sub" id="result-sub">Nitrox 32% — PPO2 1.6 bar</div>
+      </div>
+      <div class="result-safe" id="result-safe">
+        <span>✓</span>
+        <span>Limite légale en France : PPO2 1.6 bar (Code du sport).</span>
+      </div>
+    </div>
+
+    <!-- FORMULE -->
+    <div class="formula-box">
+      <strong>Formule :</strong><br>
+      MOD = ( <code id="f-ppo2">1.4</code> ÷ <code id="f-fo2">0.32</code> − 1 ) × 10 = <code id="f-result">33.8 m</code>
+    </div>
+
+  </div>
+</div>
+
+<!-- AUTRES OUTILS -->
+<div class="autres-outils">
+  <div class="autres-inner">
+    <p class="autres-titre">Autres outils plongée</p>
+    <div class="autres-grid">
+
+      <a href="/outils/calculateur-consommation/" class="autre-card">
+        <span class="autre-emoji">⚗️</span>
+        <div class="autre-info">
+          <div class="autre-name">Consommation air</div>
+          <div class="autre-desc">Autonomie bouteille</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+
+<style is:global>
+/* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--bordure);
+      padding: 0 2.5rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+/* BREADCRUMB */
+    .breadcrumb {
+      margin-top: 64px;
+      padding: 1rem 2.5rem;
+      font-size: 0.8rem;
+      color: var(--texte-sec);
+      background: var(--gris-doux);
+      border-bottom: 1px solid var(--bordure);
+    }
+
+.breadcrumb a { color: var(--bleu-mer); text-decoration: none; }
+
+.breadcrumb span { margin: 0 6px; }
+
+/* HERO PAGE */
+    .page-hero {
+      background: linear-gradient(160deg, var(--blanc-pur) 0%, var(--blanc-mer) 100%);
+      padding: 3rem 2.5rem 2rem;
+      border-bottom: 1px solid var(--bordure);
+    }
+
+.page-hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+.page-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--bleu-mer);
+      background: var(--blanc-mer);
+      border: 1px solid var(--bordure);
+      padding: 0.3rem 0.85rem;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+    }
+
+.page-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 500;
+      line-height: 1.2;
+      color: var(--bleu-nuit);
+      margin-bottom: 0.75rem;
+    }
+
+.page-sub {
+      font-size: 1rem;
+      color: var(--texte-sec);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 600px;
+    }
+
+/* MAIN LAYOUT */
+    .main-layout {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 2rem;
+      align-items: start;
+    }
+
+/* CALCULATEUR */
+    .calc-card {
+      background: white;
+      border: 1px solid var(--bordure);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(26,58,92,0.07);
+      position: sticky;
+      top: 80px;
+    }
+
+.calc-title {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--bleu-nuit);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+.field-group {
+      margin-bottom: 1.25rem;
+    }
+
+label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--bleu-nuit);
+      margin-bottom: 6px;
+    }
+
+.label-hint {
+      font-size: 0.75rem;
+      color: var(--texte-sec);
+      font-weight: 300;
+      margin-left: 6px;
+    }
+
+input[type="range"] {
+      width: 100%;
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 99px;
+      background: var(--bordure);
+      outline: none;
+      margin: 8px 0 4px;
+    }
+
+input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--bleu-mer);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(46,134,193,0.3);
+      transition: transform 0.15s;
+    }
+
+input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+.range-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--texte-sec);
+    }
+
+.value-display {
+      display: inline-block;
+      background: var(--blanc-mer);
+      border: 1px solid var(--bordure);
+      border-radius: 8px;
+      padding: 2px 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--bleu-mer);
+      min-width: 60px;
+      text-align: center;
+    }
+
+/* PPO2 Toggle */
+    .ppo2-toggle {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+.ppo2-btn {
+      padding: 0.6rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--bordure);
+      background: white;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+.ppo2-btn:hover { border-color: var(--bleu-ciel); }
+
+.ppo2-btn.active {
+      border-color: var(--bleu-mer);
+      background: var(--blanc-mer);
+    }
+
+.ppo2-btn .val {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--bleu-nuit);
+      display: block;
+    }
+
+.ppo2-btn.active .val { color: var(--bleu-mer); }
+
+.ppo2-btn .desc {
+      font-size: 0.7rem;
+      color: var(--texte-sec);
+      margin-top: 2px;
+    }
+
+/* RÉSULTAT */
+    .result-box {
+      margin-top: 1.5rem;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+.result-main {
+      background: var(--bleu-nuit);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+
+.result-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+.result-value {
+      font-family: 'Lora', serif;
+      font-size: 3rem;
+      font-weight: 500;
+      color: var(--bleu-ciel);
+      line-height: 1;
+    }
+
+.result-unit {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.5);
+      margin-left: 4px;
+    }
+
+.result-sub {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 6px;
+    }
+
+.result-warning {
+      background: #FEF3E8;
+      border: 1px solid #F5A623;
+      border-top: none;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: #7A5200;
+      display: none;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+.result-warning.visible { display: flex; }
+
+.result-safe {
+      background: #E8F5EE;
+      border: 1px solid #27AE60;
+      border-top: none;
+      padding: 0.75rem 1rem;
+      font-size: 0.8rem;
+      color: #1A5C30;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+/* FORMULE */
+    .formula-box {
+      margin-top: 1.25rem;
+      background: var(--gris-doux);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+      color: var(--texte-sec);
+    }
+
+.formula-box code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: var(--bleu-mer);
+      background: var(--blanc-mer);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+/* CONTENU SEO */
+    .content-col h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--bleu-nuit);
+      margin: 2rem 0 0.75rem;
+      line-height: 1.3;
+    }
+
+.content-col h2:first-child { margin-top: 0; }
+
+.content-col h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--bleu-nuit);
+      margin: 1.5rem 0 0.5rem;
+    }
+
+.content-col p {
+      font-size: 0.95rem;
+      color: var(--texte-sec);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+.content-col strong { color: var(--bleu-nuit); font-weight: 500; }
+
+.info-box {
+      background: var(--blanc-mer);
+      border-left: 3px solid var(--bleu-mer);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+.info-box p { margin: 0; font-size: 0.88rem; }
+
+.warning-box {
+      background: #FEF9E7;
+      border-left: 3px solid var(--ambre);
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+
+.warning-box p { margin: 0; font-size: 0.88rem; color: #7A5200; }
+
+/* TABLE */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.88rem;
+    }
+
+.data-table th {
+      background: var(--bleu-nuit);
+      color: white;
+      padding: 0.6rem 0.85rem;
+      text-align: left;
+      font-weight: 500;
+    }
+
+.data-table td {
+      padding: 0.6rem 0.85rem;
+      border-bottom: 1px solid var(--bordure);
+      color: var(--texte-sec);
+    }
+
+.data-table tr:nth-child(even) td { background: var(--gris-doux); }
+
+.data-table td strong { color: var(--bleu-nuit); }
+
+/* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--bordure);
+      padding: 1rem 0;
+    }
+
+.faq-q {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--bleu-nuit);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+.faq-q::after {
+      content: '+';
+      font-size: 1.25rem;
+      color: var(--bleu-mer);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+
+.faq-a {
+      font-size: 0.88rem;
+      color: var(--texte-sec);
+      line-height: 1.7;
+      margin-top: 0.75rem;
+      display: none;
+      font-weight: 300;
+    }
+
+.faq-item.open .faq-a { display: block; }
+
+/* AUTRES OUTILS */
+    .autres-outils {
+      background: var(--gris-doux);
+      border-top: 1px solid var(--bordure);
+      padding: 3rem 2.5rem;
+    }
+
+.autres-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+.autres-titre {
+      font-family: 'Lora', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: var(--bleu-nuit);
+      margin-bottom: 1.25rem;
+    }
+
+.autres-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+.autre-card {
+      background: white;
+      border: 1px solid var(--bordure);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+.autre-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(26,58,92,0.09);
+    }
+
+.autre-emoji { font-size: 1.5rem; }
+
+.autre-info { flex: 1; }
+
+.autre-name { font-size: 0.9rem; font-weight: 500; color: var(--bleu-nuit); }
+
+.autre-desc { font-size: 0.78rem; color: var(--texte-sec); margin-top: 2px; }
+
+/* FOOTER */
+    footer {
+      background: var(--bleu-nuit);
+      color: rgba(255,255,255,0.5);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+@media (max-width: 768px) {
+      .main-layout { grid-template-columns: 1fr; padding: 1.5rem; }
+      .calc-card { position: static; }
+      nav a:not(.btn-nav) { display: none; }
+    }
+</style>
+<script is:inline>
+let currentPpo2 = 1.6;
+
+  function setPpo2(val) {
+    currentPpo2 = val;
+    document.getElementById('btn-14').classList.toggle('active', val === 1.4);
+    document.getElementById('btn-16').classList.toggle('active', val === 1.6);
+    updateCalc();
+  }
+
+  function setFo2(val) {
+    document.getElementById('fo2').value = val;
+    updateCalc();
+  }
+
+  function updateCalc() {
+    const fo2 = parseInt(document.getElementById('fo2').value);
+    const fo2frac = fo2 / 100;
+    const mod = ((currentPpo2 / fo2frac) - 1) * 10;
+    const modRounded = Math.floor(mod);
+
+    document.getElementById('fo2-display').textContent = fo2;
+    document.getElementById('mod-result').textContent = modRounded;
+
+    const mixName = fo2 === 21 ? 'Air' : `Nitrox ${fo2}%`;
+    document.getElementById('result-sub').textContent = `${mixName} — PPO2 ${currentPpo2} bar`;
+
+    // Formule
+    document.getElementById('f-ppo2').textContent = currentPpo2;
+    document.getElementById('f-fo2').textContent = fo2frac.toFixed(2);
+    document.getElementById('f-result').textContent = `${modRounded} m`;
+
+    // Info légale
+    document.getElementById('result-safe').style.display = currentPpo2 === 1.6 ? 'flex' : 'none';
+  }
+
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+
+  // Init
+  updateCalc();
+</script>
+</Layout>
