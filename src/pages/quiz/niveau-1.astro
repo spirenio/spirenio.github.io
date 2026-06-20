@@ -62,15 +62,15 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
     <div class="autres-grid">
       <a href="/quiz/niveau-2/" class="autre-card">
         <span class="autre-emoji">📋</span>
-        <div><div class="autre-name">Quiz Niveau 2</div><div class="autre-desc">Plongeur autonome PE40</div></div>
+        <div><div class="autre-name">Quiz Niveau 2</div></div>
       </a>
       <a href="/quiz/niveau-3/" class="autre-card">
         <span class="autre-emoji">📋</span>
-        <div><div class="autre-name">Quiz Niveau 3</div><div class="autre-desc">Directeur de palanquée PA60</div></div>
+        <div><div class="autre-name">Quiz Niveau 3</div></div>
       </a>
       <a href="/quiz/niveau-4/" class="autre-card">
         <span class="autre-emoji">📋</span>
-        <div><div class="autre-name">Quiz Niveau 4</div><div class="autre-desc">Plongeur autonome toutes profondeurs</div></div>
+        <div><div class="autre-name">Quiz Niveau 4</div></div>
       </a>
     </div>
   </div>
@@ -94,7 +94,7 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
 .page-sub { font-size: 1rem; color: var(--texte-sec); line-height: 1.7; font-weight: 300; max-width: 600px; text-align: justify; }
 
 /* QUIZ CONTAINER */
-    .quiz-container { max-width: 800px; margin: 0 auto; padding: 2.5rem; }
+    .quiz-container { max-width: 800px; margin: 0 auto; padding: 2.5rem 2.5rem 4.5rem; }
 
 /* PROGRESS */
     .progress-bar-wrap { background: var(--bordure); border-radius: 99px; height: 6px; margin-bottom: 2rem; }
@@ -152,14 +152,20 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
 
 .explication.visible { display: block; }
 
-/* NAV */
-    .quiz-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; }
+/* NAV — barre fixe collée en bas de l'écran */
+    .quiz-nav {
+      position: fixed; left: 0; right: 0; bottom: 0; z-index: 90;
+      background: rgba(255,255,255,0.96); backdrop-filter: blur(10px);
+      border-top: 1px solid var(--bordure);
+      padding: 0.8rem 1.5rem;
+      display: flex; justify-content: center;
+      transform: translateY(120%); transition: transform 0.28s ease;
+    }
+    .quiz-nav.visible { transform: translateY(0); }
 
-.btn-next { background: var(--bleu-mer); color: white; border: none; padding: 0.75rem 1.75rem; border-radius: 99px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s; display: none; }
+.btn-next { background: var(--bleu-mer); color: white; border: none; padding: 0.85rem 1.75rem; border-radius: 99px; font-size: 0.95rem; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.15s; display: block; width: 100%; max-width: 760px; }
 
 .btn-next:hover { background: var(--bleu-nuit); transform: translateY(-1px); }
-
-.btn-next.visible { display: block; }
 
 /* RÉSULTAT FINAL */
     .result-screen { display: none; background: white; border: 1px solid var(--bordure); border-radius: 20px; padding: 3rem 2rem; text-align: center; box-shadow: 0 4px 24px rgba(26,58,92,0.06); }
@@ -210,7 +216,7 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
 .autre-desc { font-size: 0.78rem; color: var(--texte-sec); margin-top: 2px; }
 
 @media (max-width: 768px) {
-      .quiz-container { padding: 1.5rem; }
+      .quiz-container { padding: 1.5rem 1.5rem 4.5rem; }
       nav a:not(.btn-nav) { display: none; }
     }
 </style>
@@ -523,8 +529,7 @@ function renderQuestion() {
       </div>
       <div class="explication" id="explication"></div>
     </div>
-    <div class="quiz-nav">
-      <span></span>
+    <div class="quiz-nav" id="quiz-nav">
       <button class="btn-next" id="btn-next" onclick="nextQuestion()">
         ${currentQ < questions.length - 1 ? 'Question suivante →' : 'Voir mes résultats'}
       </button>
@@ -557,7 +562,7 @@ function selectAnswer(selected) {
     explication.className = 'explication wrong visible';
   }
 
-  document.getElementById('btn-next').classList.add('visible');
+  document.getElementById('quiz-nav').classList.add('visible');
   updateProgress();
 }
 
