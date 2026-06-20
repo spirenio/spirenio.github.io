@@ -1,0 +1,79 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Outils & calculateurs plongée — MOD, autonomie en air | Spirenio";
+const description = "Calculateurs de plongée gratuits : MOD / PMU (profondeur maximale d'opération, air et nitrox) et autonomie en air. Outils précis et pédagogiques pour plongeurs FFESSM.";
+---
+
+<Layout title={title} description={description}>
+<Fragment slot="head">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Outils & calculateurs plongée — Spirenio",
+  "description": "Calculateurs de plongée gratuits pour préparer et sécuriser vos plongées : MOD / PMU et autonomie en air.",
+  "url": "https://spirenio.fr/outils/"
+}
+</script>
+</Fragment>
+
+<div class="breadcrumb">
+  <a href="/">Accueil</a><span>›</span>
+  Outils
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner anim">
+    <span class="page-tag">Calculateurs</span>
+    <h1 class="page-title">Outils du plongeur<br><em>Calculateurs clairs et précis</em></h1>
+    <p class="page-sub">Des calculateurs gratuits, pédagogiques et accessibles depuis n'importe quel appareil. Chaque outil inclut la formule et les explications.</p>
+  </div>
+</div>
+
+<div class="hub-intro anim">
+  <p>Spirenio met à disposition des calculateurs de plongée gratuits pour préparer et sécuriser vos plongées. Chaque outil affiche la formule utilisée et des explications pédagogiques, dans le respect des références françaises (Code du sport, FFESSM). D'autres calculateurs seront ajoutés progressivement.</p>
+</div>
+
+<div class="tools-grid">
+
+  <a href="/outils/calculateur-mod/" class="tool-card anim">
+    <div class="tool-emoji">🫧</div>
+    <div class="tool-name">Calculateur MOD / PMU</div>
+    <div class="tool-desc">Profondeur maximale d'opération pour l'air et le nitrox, selon la PPO2. Inclut la formule et les explications sur la toxicité de l'oxygène. Limite légale en France : 1,6 bar.</div>
+    <span class="tool-cta">Utiliser l'outil →</span>
+  </a>
+
+  <a href="/outils/calculateur-consommation/" class="tool-card anim">
+    <div class="tool-emoji">⚗️</div>
+    <div class="tool-name">Autonomie en air</div>
+    <div class="tool-desc">Calculez votre autonomie selon votre consommation de surface, la profondeur, le type de bloc et la réserve. Pratique pour planifier une plongée.</div>
+    <span class="tool-cta">Utiliser l'outil →</span>
+  </a>
+
+</div>
+
+<style is:global>
+  .breadcrumb { margin-top: 64px; padding: 1rem 2.5rem; font-size: 0.8rem; color: var(--texte-sec); background: var(--gris-doux); border-bottom: 1px solid var(--bordure); }
+  .breadcrumb a { color: var(--bleu-mer); text-decoration: none; }
+  .breadcrumb span { margin: 0 6px; }
+
+  .page-hero { background: linear-gradient(160deg, var(--blanc-pur) 0%, var(--blanc-mer) 100%); padding: 3rem 2.5rem 2rem; border-bottom: 1px solid var(--bordure); }
+  .page-hero-inner { max-width: 800px; margin: 0 auto; }
+  .page-tag { display: inline-block; font-size: 0.75rem; font-weight: 500; color: var(--bleu-mer); background: var(--blanc-mer); border: 1px solid var(--bordure); padding: 0.3rem 0.85rem; border-radius: 99px; margin-bottom: 1rem; }
+  .page-title { font-family: 'Lora', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 500; line-height: 1.2; color: var(--bleu-nuit); margin-bottom: 0.75rem; }
+  .page-title em { font-style: italic; color: var(--bleu-mer); }
+  .page-sub { font-size: 1rem; color: var(--texte-sec); line-height: 1.7; font-weight: 300; max-width: 600px; text-align: justify; }
+
+  .hub-intro { max-width: 800px; margin: 0 auto; padding: 2.5rem 2.5rem 0.5rem; }
+  .hub-intro p { font-size: 1rem; color: var(--texte-sec); line-height: 1.7; font-weight: 300; text-align: justify; }
+
+  .tools-grid { max-width: 800px; margin: 0 auto; padding: 1.5rem 2.5rem 3.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .tool-card { background: white; border: 1px solid var(--bordure); border-radius: 20px; padding: 1.75rem; box-shadow: 0 4px 24px rgba(26,58,92,0.06); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; }
+  .tool-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(26,58,92,0.12); border-color: var(--bleu-ciel); }
+  .tool-emoji { font-size: 1.75rem; width: 52px; height: 52px; background: var(--gris-doux); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+  .tool-name { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 500; color: var(--bleu-nuit); margin-bottom: 0.4rem; }
+  .tool-desc { font-size: 0.85rem; color: var(--texte-sec); line-height: 1.55; margin-bottom: 1rem; flex-grow: 1; text-align: justify; }
+  .tool-cta { font-size: 0.9rem; font-weight: 500; color: var(--bleu-mer); }
+</style>
+</Layout>
