@@ -1,0 +1,81 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Ressources plongée FFESSM | Spirenio";
+const description = "Ressources pour préparer vos brevets de plongée FFESSM : calculateurs, quiz et références officielles (FFESSM, Code du sport).";
+---
+
+<Layout title={title} description={description}>
+
+<div class="breadcrumb">
+  <a href="/">Accueil</a><span>›</span>
+  Ressources
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner anim">
+    <span class="page-tag">Ressources</span>
+    <h1 class="page-title">Ressources<br><em>Pour réviser et progresser</em></h1>
+    <p class="page-sub">Les outils Spirenio et une sélection de références officielles pour préparer vos brevets et plonger en sécurité.</p>
+  </div>
+</div>
+
+<div class="content anim">
+
+  <h2>Les outils Spirenio</h2>
+  <div class="res-grid">
+    <a href="/outils/calculateur-mod/" class="res-card">
+      <span class="res-emoji">🫧</span>
+      <div><div class="res-name">Calculateur MOD / PMU</div><div class="res-desc">Profondeur maximale d'opération (air & nitrox)</div></div>
+    </a>
+    <a href="/outils/calculateur-consommation/" class="res-card">
+      <span class="res-emoji">⚗️</span>
+      <div><div class="res-name">Autonomie en air</div><div class="res-desc">Calcul d'autonomie selon profondeur et bloc</div></div>
+    </a>
+    <a href="/quiz/niveau-1/" class="res-card">
+      <span class="res-emoji">📋</span>
+      <div><div class="res-name">Quiz Niveau 1</div><div class="res-desc">37 questions pour préparer le brevet N1</div></div>
+    </a>
+  </div>
+
+  <h2>Références officielles</h2>
+  <p>Pour aller à la source, ces références font autorité en plongée FFESSM :</p>
+  <ul class="res-links">
+    <li><a href="https://www.ffessm.fr" target="_blank" rel="noopener">FFESSM</a> — Fédération Française d'Études et de Sports Sous-Marins : actualités, formations et textes fédéraux.</li>
+    <li><a href="https://www.legifrance.gouv.fr" target="_blank" rel="noopener">Légifrance</a> — le Code du sport, qui encadre réglementairement la plongée de loisir en France.</li>
+  </ul>
+
+  <p class="res-note">Cette page s'enrichira progressivement de fiches techniques et de mémos téléchargeables.</p>
+
+</div>
+
+<style is:global>
+  .breadcrumb { margin-top: 64px; padding: 1rem 2.5rem; font-size: 0.8rem; color: var(--texte-sec); background: var(--gris-doux); border-bottom: 1px solid var(--bordure); }
+  .breadcrumb a { color: var(--bleu-mer); text-decoration: none; }
+  .breadcrumb span { margin: 0 6px; }
+
+  .page-hero { background: linear-gradient(160deg, var(--blanc-pur) 0%, var(--blanc-mer) 100%); padding: 3rem 2.5rem 2rem; border-bottom: 1px solid var(--bordure); }
+  .page-hero-inner { max-width: 760px; margin: 0 auto; }
+  .page-tag { display: inline-block; font-size: 0.75rem; font-weight: 500; color: var(--bleu-mer); background: var(--blanc-mer); border: 1px solid var(--bordure); padding: 0.3rem 0.85rem; border-radius: 99px; margin-bottom: 1rem; }
+  .page-title { font-family: 'Lora', serif; font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 500; line-height: 1.2; color: var(--bleu-nuit); margin-bottom: 0.75rem; }
+  .page-title em { font-style: italic; color: var(--bleu-mer); }
+  .page-sub { font-size: 1rem; color: var(--texte-sec); line-height: 1.7; font-weight: 300; max-width: 600px; text-align: justify; }
+
+  .content { max-width: 760px; margin: 0 auto; padding: 2.5rem 2.5rem 4rem; }
+  .content h2 { font-family: 'Lora', serif; font-size: 1.3rem; font-weight: 500; color: var(--bleu-nuit); margin: 2.25rem 0 1rem; }
+  .content h2:first-child { margin-top: 0; }
+  .content p { font-size: 0.95rem; color: var(--texte-sec); line-height: 1.75; margin-bottom: 1rem; text-align: justify; }
+  .content a { color: var(--bleu-mer); }
+
+  .res-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-bottom: 1rem; }
+  .res-card { background: white; border: 1px solid var(--bordure); border-radius: 12px; padding: 1rem 1.25rem; text-decoration: none; color: inherit; transition: transform 0.2s, box-shadow 0.2s; display: flex; align-items: center; gap: 12px; }
+  .res-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,58,92,0.09); }
+  .res-emoji { font-size: 1.5rem; }
+  .res-name { font-size: 0.9rem; font-weight: 500; color: var(--bleu-nuit); }
+  .res-desc { font-size: 0.78rem; color: var(--texte-sec); margin-top: 2px; }
+
+  .res-links { list-style: none; padding: 0; margin: 0 0 1rem; }
+  .res-links li { font-size: 0.95rem; color: var(--texte-sec); line-height: 1.7; margin-bottom: 0.6rem; padding-left: 1rem; border-left: 2px solid var(--bordure); }
+  .res-note { font-size: 0.85rem !important; color: var(--texte-sec); font-style: italic; }
+</style>
+</Layout>
