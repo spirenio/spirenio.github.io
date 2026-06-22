@@ -88,8 +88,6 @@ const description = "Outils, calculateurs et quiz FFESSM pour plongeurs. Prépar
         <div class="outil-desc">Calculez votre autonomie selon votre consommation en surface, la profondeur, le type de bloc et la réserve.</div>
         <div class="outil-link">Utiliser l'outil →</div>
       </a>
-
-
     </div>
   </div>
 </section>
@@ -100,14 +98,19 @@ const description = "Outils, calculateurs et quiz FFESSM pour plongeurs. Prépar
     <span class="section-tag reveal">Préparation FFESSM</span>
     <h2 class="section-title reveal">Quiz par niveau</h2>
     <p class="section-sub reveal">Entraînez-vous avec des questions issues des examens FFESSM. Correction immédiate et explications détaillées.</p>
-    <div class="quiz-grid">
-      <a href="/quiz/niveau-1/" class="quiz-card reveal">
-        <span class="quiz-badge badge-free">Gratuit</span>
-        <span class="quiz-level">N1</span>
-        <div class="quiz-name">Niveau 1</div>
-      </a>
+    
+    <div class="quiz-wrapper">
+      <!-- N1 -->
+      <div class="quiz-item">
+        <a href="/quiz/niveau-1/" class="quiz-card reveal">
+          <span class="quiz-badge badge-free">Gratuit</span>
+          <span class="quiz-level">N1</span>
+          <div class="quiz-name">Niveau 1</div>
+        </a>
+      </div>
 
-      <div>
+      <!-- N2 -->
+      <div class="quiz-item">
         <a href="/quiz/niveau-2/" class="quiz-card reveal">
           <span class="quiz-badge badge-free">Gratuit</span>
           <span class="quiz-level">N2</span>
@@ -118,7 +121,8 @@ const description = "Outils, calculateurs et quiz FFESSM pour plongeurs. Prépar
         </div>
       </div>
 
-      <div>
+      <!-- N3 -->
+      <div class="quiz-item">
         <a href="/quiz/niveau-3/" class="quiz-card reveal">
           <span class="quiz-badge badge-free">Gratuit</span>
           <span class="quiz-level">N3</span>
@@ -129,7 +133,8 @@ const description = "Outils, calculateurs et quiz FFESSM pour plongeurs. Prépar
         </div>
       </div>
 
-      <div>
+      <!-- N4 -->
+      <div class="quiz-item">
         <a href="/quiz/niveau-4/" class="quiz-card reveal">
           <span class="quiz-badge badge-pro">Pro</span>
           <span class="quiz-level">N4</span>
@@ -152,8 +157,6 @@ const description = "Outils, calculateurs et quiz FFESSM pour plongeurs. Prépar
     <a href="/premium/" class="btn-primary reveal">Découvrir Spirenio Pro</a>
   </div>
 </section>
-
-<!-- FOOTER -->
 
 <style is:global>
 /* ── HEADER ── */
@@ -501,10 +504,16 @@ h1 em {
       background: var(--gris-doux);
     }
 
-.quiz-grid {
+.quiz-wrapper {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 12px;
+    }
+
+.quiz-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
 .quiz-card {
@@ -518,6 +527,11 @@ h1 em {
       transition: transform 0.2s, box-shadow 0.2s;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 140px;
     }
 
 .quiz-card:hover {
@@ -564,12 +578,12 @@ h1 em {
   background: #f0f4f8;
   border-left: 4px solid #2E86C1;
   padding: 12px 16px;
-  margin-top: 8px;
   font-size: 14px;
   color: #666;
   font-style: italic;
   text-align: justify;
   border-radius: 6px;
+  width: 100%;
 }
 
 .coming-soon p {
@@ -646,6 +660,7 @@ h1 em {
       nav { gap: 1rem; }
       nav a:not(.btn-nav) { display: none; }
       .stats { gap: 2rem; }
+      .quiz-wrapper { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
     }
 </style>
 <script is:inline>
