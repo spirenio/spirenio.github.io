@@ -101,49 +101,35 @@ const description = "Outils, calculateurs et quiz FFESSM pour plongeurs. Prépar
     
     <div class="quiz-wrapper">
       <!-- N1 -->
-      <div class="quiz-item">
-        <a href="/quiz/niveau-1/" class="quiz-card reveal">
-          <span class="quiz-badge badge-free">Gratuit</span>
-          <span class="quiz-level">N1</span>
-          <div class="quiz-name">Niveau 1</div>
-        </a>
-      </div>
+      <a href="/quiz/niveau-1/" class="quiz-card reveal">
+        <span class="quiz-badge badge-free">Gratuit</span>
+        <span class="quiz-level">N1</span>
+        <div class="quiz-name">Niveau 1</div>
+      </a>
 
       <!-- N2 -->
-      <div class="quiz-item">
-        <a href="/quiz/niveau-2/" class="quiz-card reveal">
-          <span class="quiz-badge badge-free">Gratuit</span>
-          <span class="quiz-level">N2</span>
-          <div class="quiz-name">Niveau 2</div>
-        </a>
-        <div class="coming-soon">
-          <p>🔜 Bientôt disponible</p>
-        </div>
-      </div>
+      <a href="/quiz/niveau-2/" class="quiz-card reveal">
+        <span class="quiz-badge badge-free">Gratuit</span>
+        <span class="quiz-level">N2</span>
+        <div class="quiz-name">Niveau 2</div>
+        <div class="coming-soon">Bientôt disponible</div>
+      </a>
 
       <!-- N3 -->
-      <div class="quiz-item">
-        <a href="/quiz/niveau-3/" class="quiz-card reveal">
-          <span class="quiz-badge badge-free">Gratuit</span>
-          <span class="quiz-level">N3</span>
-          <div class="quiz-name">Niveau 3</div>
-        </a>
-        <div class="coming-soon">
-          <p>🔜 Bientôt disponible</p>
-        </div>
-      </div>
+      <a href="/quiz/niveau-3/" class="quiz-card reveal">
+        <span class="quiz-badge badge-free">Gratuit</span>
+        <span class="quiz-level">N3</span>
+        <div class="quiz-name">Niveau 3</div>
+        <div class="coming-soon">Bientôt disponible</div>
+      </a>
 
       <!-- N4 -->
-      <div class="quiz-item">
-        <a href="/quiz/niveau-4/" class="quiz-card reveal">
-          <span class="quiz-badge badge-pro">Pro</span>
-          <span class="quiz-level">N4</span>
-          <div class="quiz-name">Niveau 4</div>
-        </a>
-        <div class="coming-soon">
-          <p>🔜 Bientôt disponible</p>
-        </div>
-      </div>
+      <a href="/quiz/niveau-4/" class="quiz-card reveal">
+        <span class="quiz-badge badge-pro">Pro</span>
+        <span class="quiz-level">N4</span>
+        <div class="quiz-name">Niveau 4</div>
+        <div class="coming-soon">Bientôt disponible</div>
+      </a>
     </div>
   </div>
 </section>
@@ -510,12 +496,6 @@ h1 em {
       gap: 12px;
     }
 
-.quiz-item {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
 .quiz-card {
       background: white;
       border: 1px solid var(--bordure);
@@ -576,19 +556,13 @@ h1 em {
 /* ── COMING SOON ── */
 .coming-soon {
   background: #f0f4f8;
-  border-left: 4px solid #2E86C1;
-  padding: 12px 16px;
-  font-size: 14px;
+  border-top: 1px solid #E0E8F0;
+  padding: 8px 0;
+  margin-top: 8px;
+  font-size: 0.8rem;
   color: #666;
   font-style: italic;
-  text-align: justify;
-  border-radius: 6px;
-  width: 100%;
-}
-
-.coming-soon p {
-  margin: 0;
-  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 /* ── CTA SECTION ── */
