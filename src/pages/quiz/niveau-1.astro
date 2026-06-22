@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 const title = "Quiz Plongeur Niveau 1 FFESSM — Préparez votre N1 | Spirenio";
-const description = "37 questions pour préparer votre brevet de plongeur Niveau 1 FFESSM (PE20). Physique, accidents, désaturation, matériel, réglementation, signaux, environnement.";
+const description = "40 questions pour préparer votre brevet de plongeur Niveau 1 FFESSM (PE20). Physique, accidents, désaturation, matériel, réglementation, signaux, environnement.";
 ---
 
 <Layout title={title} description={description}>
@@ -11,7 +11,7 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
     "@context": "https://schema.org",
     "@type": "Quiz",
     "name": "Quiz Plongeur Niveau 1 FFESSM",
-    "description": "37 questions pour préparer le brevet de plongeur Niveau 1 FFESSM (PE20). Basé sur le Manuel de Formation Technique FFESSM décembre 2025.",
+    "description": "40 questions pour préparer le brevet de plongeur Niveau 1 FFESSM (PE20). Basé sur le Manuel de Formation Technique FFESSM décembre 2025.",
     "educationalLevel": "Plongeur Niveau 1 FFESSM",
     "about": { "@type": "Thing", "name": "Plongée sous-marine FFESSM Niveau 1" }
   }
@@ -28,14 +28,14 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
   <div class="page-hero-inner anim">
     <span class="page-tag">Quiz FFESSM</span>
     <h1 class="page-title">Quiz Plongeur Niveau 1<br><em style="font-style:italic; color:var(--bleu-mer);">PE20 — Plongeur encadré à 20 m</em></h1>
-    <p class="page-sub">37 questions réparties en 7 thèmes pour préparer votre brevet N1 FFESSM. Basé sur le Manuel de Formation Technique FFESSM — version décembre 2025. Correction immédiate avec explication à chaque question.</p>
+    <p class="page-sub">40 questions réparties en 7 thèmes pour préparer votre brevet N1 FFESSM. Basé sur le Manuel de Formation Technique FFESSM — version décembre 2025. Correction immédiate avec explication à chaque question.</p>
   </div>
 </div>
 
 <div class="quiz-container">
 
   <div class="progress-text">
-    <span id="progress-label">Question 1 / 37</span>
+    <span id="progress-label">Question 1 / 40</span>
     <span id="score-label">Score : 0 / 0</span>
   </div>
   <div class="progress-bar-wrap">
@@ -46,7 +46,7 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
 
   <div class="result-screen" id="result-screen">
     <div class="page-tag">Résultat final</div>
-    <div class="result-score" id="final-score">0/37</div>
+    <div class="result-score" id="final-score">0/40</div>
     <div class="result-label">questions correctes</div>
     <div class="result-msg" id="result-msg"></div>
     <div class="result-sub" id="result-sub"></div>
@@ -223,7 +223,7 @@ const description = "37 questions pour préparer votre brevet de plongeur Niveau
 <script is:inline>
 const questions = [
 
-  // THÈME 1 : PHYSIQUE (5 questions)
+  // THÈME 1 : PHYSIQUE (6 questions)
   {
     theme: "Physique",
     q: "À 20 mètres de profondeur, quelle est la pression absolue ?",
@@ -258,6 +258,13 @@ const questions = [
     options: ["Moins vite qu'en surface", "À la même vitesse qu'en surface", "Plus vite qu'en surface", "Ne se propagent pas"],
     correct: 2,
     explication: "Le son se propage environ 4 fois plus vite dans l'eau que dans l'air, ce qui rend la localisation des sons difficile sous l'eau."
+  },
+  {
+    theme: "Physique",
+    q: "En profondeur, les couleurs rouges et oranges disparaissent progressivement car :",
+    options: ["L'eau absorbe les longueurs d'onde longues en premier", "Le froid désature les cônes de la rétine", "La pression écrase les photons", "L'azote modifie la vision des couleurs"],
+    correct: 0,
+    explication: "L'eau absorbe progressivement les longueurs d'onde longues (rouge, orange) au fur et à mesure de la profondeur. C'est pourquoi le rouge disparaît d'abord en profondeur et les organismes rouges paraissent noirs. Les longueurs d'onde courtes (bleu) pénètrent plus profondément."
   },
 
   // THÈME 2 : ACCIDENTS ET BAROTRAUMATISMES (5 questions)
@@ -385,7 +392,7 @@ const questions = [
     explication: "Le manomètre indique la pression restante dans la bouteille, donc la quantité d'air dont dispose encore le plongeur. Le consulter régulièrement est essentiel pour la sécurité."
   },
 
-  // THÈME 5 : RÉGLEMENTATION ET PRÉROGATIVES (5 questions)
+  // THÈME 5 : RÉGLEMENTATION ET PRÉROGATIVES (6 questions)
   {
     theme: "Réglementation",
     q: "Le plongeur Niveau 1 (PE20) peut plonger jusqu'à :",
@@ -420,6 +427,13 @@ const questions = [
     options: ["6 mois suivant l'obtention", "12 mois suivant l'obtention", "24 mois suivant l'obtention", "Cette obligation n'existe pas"],
     correct: 1,
     explication: "Selon le MFT FFESSM, un N1 certifié en milieu artificiel doit réaliser au moins 4 plongées en milieu naturel attestées sur son carnet de plongée dans les 12 mois suivant l'obtention."
+  },
+  {
+    theme: "Réglementation",
+    q: "Après une plongée, quel délai minimum est recommandé avant de prendre l'avion ?",
+    options: ["Aucun délai, c'est sans risque", "Au minimum 12 heures", "Au minimum 24 heures", "Au minimum 48 heures"],
+    correct: 2,
+    explication: "Il est recommandé d'attendre au moins 24 heures après une plongée avant de prendre l'avion. L'altitude en cabine pressée réduit la pression, ce qui peut favoriser la formation de bulles d'azote et augmenter le risque d'accident de désaturation. Ce délai peut être réduit à 12h si une seule plongée peu profonde a été effectuée et sans palier de décompression obligatoire."
   },
 
   // THÈME 6 : SIGNAUX DE COMMUNICATION (5 questions)
@@ -494,6 +508,15 @@ const questions = [
     options: ["Est uniquement réservé aux plongeurs N3 et plus", "Permet de noter ses plongées et est reconnu par la FFESSM", "Remplace le certificat médical", "N'est pas reconnu officiellement"],
     correct: 1,
     explication: "Le carnet de plongée numérique est reconnu par la FFESSM. Il permet de noter toutes ses plongées (site, profondeur, durée, conditions) et constitue un document officiel pouvant être présenté lors des plongées."
+  },
+
+  // QUESTION SUPPLÉMENTAIRE : ACCIDENTS
+  {
+    theme: "Accidents",
+    q: "À la remontée, le plongeur doit :",
+    options: ["Faire Valsalva pour équilibrer les oreilles", "Laisser l'air s'échapper naturellement par la bouche et expirer régulièrement", "Bloquer sa respiration pour économiser l'air", "Se pincer le nez comme à la descente"],
+    correct: 1,
+    explication: "À la remontée, le plongeur doit EXPIRER régulièrement et laisser l'air s'échapper naturellement. Il ne doit JAMAIS faire Valsalva (se pincer le nez et souffler) ni bloquer sa respiration, car l'air se dilate en remontant et pourrait causer une surpression pulmonaire si l'expiration est insuffisante."
   }
 
 ];
